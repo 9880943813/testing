@@ -1,0 +1,17 @@
+parameters([string(defaultValue: '', description: 'Enter step name', name: 'step_name', trim: true), string(defaultValue: '', description: 'Enter project name', name: 'project_name', trim: true), string(defaultValue: '', description: 'Enter table name', name: 'table_name', trim: true)]), [$class: 'ThrottleJobProperty', categories: [], limitOneJobWithMatchingParams: false, maxConcurrentPerNode: 0, maxConcurrentTotal: 0, paramsToUseForLimit: '', throttleEnabled: false, throttleOption: 'project']])
+pipeline {
+    agent any
+
+    stages {
+        stage('build') {
+            steps {
+                sh '''#!/bin/bash
+				cd python_scripts
+				python get_schema.py "${step_name}" "${project_name}" "${table_name}"
+				'''
+            }
+        }
+        
+    }
+}
+
