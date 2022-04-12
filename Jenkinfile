@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh '''#!/bin/bash
+                sh '''
 				cd python_scripts
 				python get_schema.py "${step_name}" "${project_name}" "${table_name}"
 				'''
