@@ -1,6 +1,12 @@
-properties([parameters([string(description: 'Enter step name', name: 'step_name'), string(description: 'Enter project name', name: 'project_name', trim: true), string(description: 'Enter table name', name: 'table_name')])])
 pipeline {
     agent any
+    parameters{
+        string(name: 'step_name', defaultValue: '', description: 'enter step name' ),
+        string(name: 'project_name', defaultValue: '', description: 'enter project name' ),
+        string(name: 'table_name', defaultValue: '', description: 'enter table name' )
+        
+        
+    }
 
     stages {
         stage('build') {
@@ -15,3 +21,4 @@ pipeline {
         }
     }
 }
+
